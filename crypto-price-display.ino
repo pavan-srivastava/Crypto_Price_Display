@@ -7,7 +7,7 @@ const char* ssid = "<Wifi SSID>";     // Replace with your Wi-Fi SSID
 const char* password = "<Wifi Password>";           // Replace with your Wi-Fi Password
 
 // CoinMarketCap API key
-const char* apiKey = "<CoinMarketCap API key>"; // Replace with your CoinMarketCap API key
+const char* apiKey = "<CoinMarketCap API key>"; // Replace with your CoinMarketCap API key/Basic Tier
 
 // CoinMarketCap API URL for fetching BTC, ETH, SOL prices
 const char* apiURL = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=10&convert=USD";
