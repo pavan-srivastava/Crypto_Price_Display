@@ -143,7 +143,6 @@ void displaySOLView(float solPrice) {
   tft.println("$" + String(solPrice, 2));
 }
 
-
 void loop() {
   if (WiFi.status() == WL_CONNECTED) {
     // Create a JSON document object
