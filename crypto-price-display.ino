@@ -148,7 +148,7 @@ void loop() {
     // Create a JSON document object
     DynamicJsonDocument doc(8192);
 
-    if (fetchCryptoPrices(doc)) { // Fetch and parse API response
+    if (fetchCryptoPrices(doc)) { // Fetch and parse API response.
       // Get prices for BTC, ETH, and SOL
       float btcPrice = getPriceByName("BTC", doc);
       float ethPrice = getPriceByName("ETH", doc);
