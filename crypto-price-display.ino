@@ -80,6 +80,70 @@ void setup() {
   delay(1000);
 }
 
+
+void displayThreeInOneView(float btcPrice, float ethPrice, float solPrice) {
+  tft.fillScreen(TFT_BLACK);
+
+  // Bitcoin
+  tft.setTextColor(TFT_WHITE, TFT_BLACK);
+  tft.setTextSize(3);
+  tft.setCursor(55, 30);
+  tft.println("Bitcoin:");
+  tft.setTextColor(TFT_GREEN, TFT_BLACK);
+  tft.setCursor(55, 55);
+  tft.println("$" + String(btcPrice, 2));
+
+  // Ethereum
+  tft.setTextColor(TFT_WHITE, TFT_BLACK);
+  tft.setCursor(55, 90);
+  tft.println("Ethereum:");
+  tft.setTextColor(TFT_CYAN, TFT_BLACK);
+  tft.setCursor(55, 115);
+  tft.println("$" + String(ethPrice, 2));
+
+  // Solana
+  tft.setTextColor(TFT_WHITE, TFT_BLACK);
+  tft.setCursor(55, 150);
+  tft.println("Solana:");
+  tft.setTextColor(TFT_MAGENTA, TFT_BLACK);
+  tft.setCursor(55, 175);
+  tft.println("$" + String(solPrice, 2));
+}
+
+void displayBTCView(float btcPrice) {
+  tft.fillScreen(TFT_BLACK);
+  tft.setTextColor(TFT_WHITE, TFT_BLACK);
+  tft.setTextSize(3);
+  tft.setCursor(55, 30);
+  tft.println("Bitcoin:");
+  tft.setTextColor(TFT_GREEN, TFT_BLACK);
+  tft.setCursor(55, 55);
+  tft.println("$" + String(btcPrice, 2));
+}
+
+void displayETHView(float ethPrice) {
+  tft.fillScreen(TFT_BLACK);
+  tft.setTextColor(TFT_WHITE, TFT_BLACK);
+  tft.setTextSize(3);
+  tft.setCursor(55, 30);
+  tft.println("Ethereum:");
+  tft.setTextColor(TFT_CYAN, TFT_BLACK);
+  tft.setCursor(55, 55);
+  tft.println("$" + String(ethPrice, 2));
+}
+
+void displaySOLView(float solPrice) {
+  tft.fillScreen(TFT_BLACK);
+  tft.setTextColor(TFT_WHITE, TFT_BLACK);
+  tft.setTextSize(3);
+  tft.setCursor(55, 30);
+  tft.println("Solana:");
+  tft.setTextColor(TFT_MAGENTA, TFT_BLACK);
+  tft.setCursor(55, 55);
+  tft.println("$" + String(solPrice, 2));
+}
+
+
 void loop() {
   if (WiFi.status() == WL_CONNECTED) {
     // Create a JSON document object
@@ -91,34 +155,10 @@ void loop() {
       float ethPrice = getPriceByName("ETH", doc);
       float solPrice = getPriceByName("SOL", doc);
 
-      // Display prices on TFT
-      tft.fillScreen(TFT_BLACK);
-
-    // Bitcoin
-    tft.setTextColor(TFT_WHITE, TFT_BLACK);
-    tft.setTextSize(3);
-    tft.setCursor(55, 30);
-    tft.println("Bitcoin:");
-    tft.setTextColor(TFT_GREEN, TFT_BLACK);
-    tft.setCursor(55, 55);
-    tft.println("$" + String(btcPrice, 2));
-
-    // Ethereum
-    tft.setTextColor(TFT_WHITE, TFT_BLACK);
-    tft.setCursor(55, 90);
-    tft.println("Ethereum:");
-    tft.setTextColor(TFT_CYAN, TFT_BLACK);
-    tft.setCursor(55, 115);
-    tft.println("$" + String(ethPrice, 2));
-
-    // Solana
-    tft.setTextColor(TFT_WHITE, TFT_BLACK);
-    tft.setCursor(55, 150);
-    tft.println("Solana:");
-    tft.setTextColor(TFT_MAGENTA, TFT_BLACK);
-    tft.setCursor(55, 175);
-    tft.println("$" + String(solPrice, 2));
-
+      // Display prices using the new functions
+      displayBTCView(btcPrice);
+      displayETHView(ethPrice);
+      displaySOLView(solPrice);
     } else {
       tft.fillScreen(TFT_RED);
       tft.setCursor(10, 50);
